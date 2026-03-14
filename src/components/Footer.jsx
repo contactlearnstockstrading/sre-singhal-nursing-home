@@ -1,4 +1,5 @@
 import logo from '../assets/logo.png'
+import config from '../config'
 
 export default function Footer() {
   return (
@@ -8,11 +9,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 text-white font-bold text-lg mb-3">
-              <img src={logo} alt="Singhal Nursing Home" className="h-8 w-auto" style={{ filter: 'hue-rotate(160deg) saturate(1.2)' }} />
-              Singhal Nursing Home
+              <img src={logo} alt={config.name} className="h-8 w-auto" style={{ filter: 'hue-rotate(160deg) saturate(1.2)' }} />
+              {config.name}
             </div>
             <p className="text-sm leading-relaxed">
-              Advanced Surgical Care, Family Values. Serving the community with
+              {config.tagline}. Serving the community with
               dedication and compassion.
             </p>
           </div>
@@ -32,18 +33,18 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-3">Contact</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="tel:+911234567890" className="hover:text-teal-400 transition-colors">
-                  +91 12345 67890
+                <a href={config.phoneLink} className="hover:text-teal-400 transition-colors">
+                  {config.phoneDisplay}
                 </a>
               </li>
-              <li>Near City Center, Main Road</li>
-              <li>Your City, Uttar Pradesh</li>
+              <li>{config.address.line1}</li>
+              <li>{config.address.line2}</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-10 pt-6 border-t border-gray-700 text-center text-xs text-gray-500">
-          &copy; {new Date().getFullYear()} Singhal Nursing Home. All rights reserved.
+          &copy; {new Date().getFullYear()} {config.name}. All rights reserved.
         </div>
       </div>
     </footer>

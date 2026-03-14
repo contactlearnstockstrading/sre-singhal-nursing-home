@@ -1,14 +1,10 @@
 import { MessageCircle } from 'lucide-react'
-
-const PHONE = '919359202112'
-const MESSAGE = encodeURIComponent(
-  'Hi, I would like to request a call back from Singhal Nursing Home regarding an appointment.'
-)
+import config from '../config'
 
 export default function WhatsAppButton() {
   return (
     <a
-      href={`https://wa.me/${PHONE}?text=${MESSAGE}`}
+      href={config.whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Request a call back on WhatsApp"

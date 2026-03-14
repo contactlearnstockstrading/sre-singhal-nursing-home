@@ -1,7 +1,5 @@
 import { MapPin, Clock, Phone } from 'lucide-react'
-
-const GOOGLE_FORM_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLSdOjsdfo3yPV1r7FbW4_OP80JaOtDwrBFr_zfkzr0rdrv2kmA/viewform?embedded=true'
+import config from '../config'
 
 export default function Contact() {
   return (
@@ -20,7 +18,7 @@ export default function Contact() {
           {/* Google Form Embed */}
           <div className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100">
             <iframe
-              src={GOOGLE_FORM_URL}
+              src={config.googleFormUrl}
               title="Book an Appointment"
               className="w-full border-0"
               style={{ height: '1391px' }}
@@ -38,9 +36,9 @@ export default function Contact() {
               <div>
                 <h3 className="font-bold text-charcoal mb-1">Location</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Singhal Nursing Home<br />
-                  Near City Center, Main Road<br />
-                  Your City, Uttar Pradesh
+                  {config.name}<br />
+                  {config.address.line1}<br />
+                  {config.address.line2}
                 </p>
               </div>
             </div>
@@ -52,9 +50,9 @@ export default function Contact() {
               <div>
                 <h3 className="font-bold text-charcoal mb-1">Hours</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Monday – Saturday: 9:00 AM – 8:00 PM<br />
-                  Sunday: 10:00 AM – 2:00 PM<br />
-                  <span className="text-teal-600 font-medium">Emergency: 24/7</span>
+                  {config.hours.weekdays}<br />
+                  {config.hours.weekends}<br />
+                  <span className="text-teal-600 font-medium">{config.hours.emergency}</span>
                 </p>
               </div>
             </div>
@@ -66,8 +64,8 @@ export default function Contact() {
               <div>
                 <h3 className="font-bold text-charcoal mb-1">Phone</h3>
                 <p className="text-gray-600 text-sm">
-                  <a href="tel:+919359202112" className="hover:text-teal-600 transition-colors">
-                    +91 12345 67890
+                  <a href={config.phoneLink} className="hover:text-teal-600 transition-colors">
+                    {config.phoneDisplay}
                   </a>
                 </p>
               </div>
@@ -77,7 +75,7 @@ export default function Contact() {
             <div className="pt-4 border-t border-gray-100">
               <p className="text-sm text-gray-500 mb-3">Or reach us instantly on WhatsApp</p>
               <a
-                href="https://wa.me/919359202112?text=Hi%2C%20I%20would%20like%20to%20request%20a%20call%20back%20from%20Singhal%20Nursing%20Home."
+                href={config.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors"

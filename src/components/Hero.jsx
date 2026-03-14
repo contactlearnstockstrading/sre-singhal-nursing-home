@@ -1,4 +1,5 @@
 import { Phone, CalendarDays } from 'lucide-react'
+import config from '../config'
 
 export default function Hero() {
   return (
@@ -18,12 +19,12 @@ export default function Hero() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-charcoal leading-tight animate-fade-in-up animation-delay-200">
-            Advanced Surgical Care,{' '}
-            <span className="text-teal-600">Family Values</span>
+            {config.tagline.split(',')[0]},{' '}
+            <span className="text-teal-600">{config.tagline.split(',')[1]?.trim()}</span>
           </h1>
 
           <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl leading-relaxed animate-fade-in-up animation-delay-400">
-            At Singhal Nursing Home, we combine modern surgical expertise with
+            At {config.name}, we combine modern surgical expertise with
             compassionate, personalised care. Your health is our family's
             commitment.
           </p>
@@ -37,7 +38,7 @@ export default function Hero() {
               Book Appointment
             </a>
             <a
-              href="tel:+911234567890"
+              href={config.phoneLink}
               className="inline-flex items-center gap-2 border-2 border-teal-600 text-teal-700 px-6 py-3 rounded-lg font-semibold hover:bg-teal-50 transition-colors"
             >
               <Phone className="w-5 h-5" />
