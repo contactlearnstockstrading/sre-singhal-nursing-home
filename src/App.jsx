@@ -18,7 +18,7 @@ export default function App() {
     <>
       <Navbar />
       <Hero />
-      <About />
+      <About onBookAppointment={() => setBookingOpen(true)} />
       <TrustBar />
       <Services />
       <Gallery />
