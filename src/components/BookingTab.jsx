@@ -1,16 +1,13 @@
-import { useState } from 'react'
 import { CalendarDays, Phone, X } from 'lucide-react'
 import config from '../config'
 
-export default function BookingTab() {
-  const [open, setOpen] = useState(false)
-
+export default function BookingTab({ open, onOpenChange }) {
   return (
     <>
       {/* Desktop: Side tab on left edge */}
       <button
-        onClick={() => setOpen(true)}
-        className="hidden md:flex fixed left-0 top-1/2 -translate-y-1/2 z-40 flex-col items-center gap-1 bg-teal-600 hover:bg-teal-700 text-white px-2 py-5 rounded-r-xl shadow-lg shadow-teal-600/30 transition-all hover:px-3 writing-vertical-lr"
+        onClick={() => onOpenChange(true)}
+        className="hidden md:flex fixed left-0 top-1/2 -translate-y-1/2 z-40 flex-col items-center gap-1 bg-teal-600 hover:bg-teal-700 text-white px-2 py-5 rounded-r-xl shadow-lg shadow-teal-600/30 transition-all hover:px-3"
         style={{ writingMode: 'vertical-lr' }}
       >
         <CalendarDays className="w-5 h-5 rotate-90 mb-2" />
@@ -20,7 +17,7 @@ export default function BookingTab() {
       {/* Mobile: Bottom sticky bar */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 shadow-[0_-4px_12px_rgba(0,0,0,0.08)] px-4 py-3 flex gap-3">
         <button
-          onClick={() => setOpen(true)}
+          onClick={() => onOpenChange(true)}
           className="flex-1 inline-flex items-center justify-center gap-2 bg-teal-600 text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-teal-700 transition-colors"
         >
           <CalendarDays className="w-4 h-4" />
@@ -38,22 +35,19 @@ export default function BookingTab() {
       {/* Modal */}
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setOpen(false)}
+            onClick={() => onOpenChange(false)}
           />
 
-          {/* Modal content */}
           <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-hidden animate-fade-in-up">
-            {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-teal-50">
               <div>
                 <h3 className="text-lg font-bold text-charcoal">Book an Appointment</h3>
                 <p className="text-sm text-gray-500">Fill the form or call us directly</p>
               </div>
               <button
-                onClick={() => setOpen(false)}
+                onClick={() => onOpenChange(false)}
                 className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
                 aria-label="Close"
               >
@@ -61,7 +55,6 @@ export default function BookingTab() {
               </button>
             </div>
 
-            {/* Quick actions */}
             <div className="px-6 py-4 flex gap-3 border-b border-gray-100">
               <a
                 href={config.phoneLink}
@@ -83,7 +76,6 @@ export default function BookingTab() {
               </a>
             </div>
 
-            {/* Google Form */}
             <div className="overflow-y-auto" style={{ maxHeight: 'calc(90vh - 180px)' }}>
               <iframe
                 src={config.googleFormUrl}
