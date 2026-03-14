@@ -21,6 +21,9 @@ const config = {
 
   googleFormUrl:
     'https://docs.google.com/forms/d/e/1FAIpQLSdOjsdfo3yPV1r7FbW4_OP80JaOtDwrBFr_zfkzr0rdrv2kmA/viewform?embedded=true',
+
+  googleMapsPanoId: 'd7ZHQBLPNd8028Er3MU1FA',
+  googleMapsPlaceId: '0x390eeabb555f8f05:0x82757d164bb930c7',
 }
 
 export default config

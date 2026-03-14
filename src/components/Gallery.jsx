@@ -8,12 +8,11 @@ const images = Object.values(
 )
 
 const captions = [
-  'Hospital Entrance',
-  'Reception Area',
-  'Consultation Room',
-  'Operation Theatre',
-  'Patient Ward',
-  'Hospital Building',
+  'Hospital Courtyard',
+  'Hospital Premises',
+  'Hospital Building & Entrance',
+  'Waiting Area',
+  'Reception & Lobby',
 ]
 
 export default function Gallery() {
@@ -41,12 +40,14 @@ export default function Gallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
           {images.map((src, i) => (
             <button
               key={i}
               onClick={() => setLightbox(i)}
-              className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-200 cursor-pointer"
+              className={`group relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-200 cursor-pointer ${
+                images.length === 5 && i < 3 ? 'md:col-span-2' : 'md:col-span-3'
+              }`}
             >
               <img
                 src={src}

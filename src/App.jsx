@@ -5,6 +5,7 @@ import About from './components/About'
 import TrustBar from './components/TrustBar'
 import Services from './components/Services'
 import Gallery from './components/Gallery'
+import VirtualTour from './components/VirtualTour'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
@@ -21,6 +22,7 @@ export default function App() {
       <TrustBar />
       <Services />
       <Gallery />
+      <VirtualTour />
       <Contact onBookAppointment={() => setBookingOpen(true)} />
       <Footer />
       <WhatsAppButton />
